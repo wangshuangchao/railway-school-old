@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="btnIn()">淡入</button>
+		<button onclick="btnOut()">淡出</button>
+		<div id="div1" style="width:80px;height:80px;background-color:green;opacity: 1;"></div>
+		<script>
+			function fadeIn(element,speed){
+			    if(element.style.opacity !=1){
+			        var speed = speed || 30 ;
+			        var num = 0;
+			        var st = setInterval(function(){
+			        num++;
+			        element.style.opacity = num/10;
+			        if(num>=10)  {  clearInterval(st);  }
+			        },speed);
+			    }
+			}
+			
+			function fadeOut(element){
+			    if(element.style.opacity !=0){
+			        var speed = speed || 30 ;
+			        var num = 10;
+			        var st = setInterval(function(){
+			        num--;
+			        element.style.opacity = num / 10 ;
+			        if(num<=0)  {   clearInterval(st);  }
+			        },speed);
+			    }
+			
+			}
+			
+			function btnIn(){
+			    fadeIn(div1,100);
+			}
+			
+			function btnOut(){
+			    fadeOut(div1,100);
+			}
+		</script>
+	</body>
+</html>
