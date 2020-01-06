@@ -19,12 +19,9 @@
 	#main-content {
 		/* background-color: aqua; */
 		width: 100%;
-		position: relative;
+		position: absolute;
 		top: 100px;
 		left: 0px;
-	}
-	#aaa {
-		background-color: #17233D;
 	}
 	
 </style>

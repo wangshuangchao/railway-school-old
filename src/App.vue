@@ -8,17 +8,16 @@
 <script>
 	import MainTitle from "components/MainTitle.vue"
 	import MainContent from "views/containt/MainContent.vue"
+	import Aaa from "components/Aaa.vue"
 
 	export default {
 		components: {
 			MainTitle,
-			MainContent
+			MainContent,
+			Aaa
 		}
 	}
 </script>
 
 <style>
-	#app {
-		/* color: red; */
-	}
 </style>
