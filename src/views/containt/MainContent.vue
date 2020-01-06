@@ -1,21 +1,16 @@
 <template>
 	<div id="main-content">
 		<MainNav></MainNav>
-		<div id="aaa">
-			内容区，不同路由，不同内容
-		</div>
-		<TestNav></TestNav>
+		<router-view></router-view>
 	</div>
 </template>
 
 <script>
 	import MainNav from "../../components/MainNav.vue"
-	import TestNav from "../../components/TestNav.vue"
 	
 	export default {
 		components: {
-			MainNav,
-			TestNav
+			MainNav
 		}
 	}
 </script>
