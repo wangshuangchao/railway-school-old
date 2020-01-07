@@ -1,10 +1,10 @@
 <template>
 	<div id="items">
-		<div :class="{active: active == home, unActive: active!=home, mouseover: active == home?false:mouseOver == home}" 
+		<div :class="{active: $store.state.navstate.home, unActive: !$store.state.navstate.home, mouseover: $store.state.navstate.home?false:mouseOver == home}" 
 		@click="selected(home)" @mouseover="mover(home)" @mouseout="mout">
 			{{home}}
 		</div>
-		<div :class="{active: active == survey, unActive: active!=survey, mouseover: active == survey?false:mouseOver == survey }" 
+		<div :class="{active: $store.state.navstate.survey, unActive: !$store.state.navstate.survey, mouseover: $store.state.navstate.survey?false:mouseOver == survey }" 
 		@click="selected(survey)" @mouseover="mouseover1(survey)" @mouseout="mouseout1">
 			<!-- {{survey}}
 			<Icon type="ios-arrow-down" /> -->
@@ -19,7 +19,7 @@
 			</Dropdown>
 		</div>
 
-		<div :class="{active: active == students, unActive: active!=students, mouseover: active == students?false:mouseOver == students }" 
+		<div :class="{active: $store.state.navstate.students, unActive: !$store.state.navstate.students, mouseover: $store.state.navstate.students?false:mouseOver == students }" 
 		@click="selected(students)" @mouseover="mouseover2(students)" @mouseout="mouseout2">
 			<!-- {{students}}
 			<Icon type="ios-arrow-down" /> -->
@@ -33,15 +33,15 @@
 				</DropdownMenu>
 			</Dropdown>
 		</div>
-		<div :class="{active: active == demeanour, unActive: active!=demeanour, mouseover: active == demeanour?false:mouseOver == demeanour }" 
+		<div :class="{active: $store.state.navstate.demeanour, unActive: !$store.state.navstate.demeanour, mouseover: $store.state.navstate.demeanour?false:mouseOver == demeanour }" 
 		@click="selected(demeanour)" @mouseover="mover(demeanour)" @mouseout="mout">
 			{{demeanour}}
 		</div>
-		<div :class="{active: active == news, unActive: active!=news, mouseover: active == news?false:mouseOver == news }" 
+		<div :class="{active: $store.state.navstate.news, unActive: !$store.state.navstate.news, mouseover: $store.state.navstate.news?false:mouseOver == news }" 
 		@click="selected(news)" @mouseover="mover(news)" @mouseout="mout">
 			{{news}}
 		</div>
-		<div :class="{active: active == contact, unActive: active!=contact, mouseover: active == contact?false:mouseOver == contact }" 
+		<div :class="{active: $store.state.navstate.contact, unActive: !$store.state.navstate.contact, mouseover: $store.state.navstate.contact?false:mouseOver == contact }" 
 		@click="selected(contact)" @mouseover="mouseover3(contact)" @mouseout="mouseout3">
 			{{contact}}
 			<!-- <Icon type="ios-arrow-down" /> -->
@@ -91,9 +91,10 @@
 		},
 		methods: {
 			selected(item) {
-				this.active = item
+				// this.active = item
 				if ('首页' === item) {
 					console.log('首页')
+					this.$store.commit('home')
 					this.$router.replace("/home")
 				} else if(false){
 					
@@ -109,27 +110,34 @@
 					
 				}else if('学院风采' === item){
 					console.log('学院风采')
+					this.$store.commit('demeanour')
 					this.$router.replace("/academyStyle")
 				}else if('新闻公告' === item){
 					console.log('新闻公告')
+					this.$store.commit('news')
 					this.$router.replace("/newsBulletin")
 				}else if('联系我们' === item){
 					console.log('联系我们')
+					this.$store.commit('contact')
 					this.$router.replace("/ContactUs")
 				}
 			},
 			selecteda(item){
 				if ('介绍' === item) {
 					console.log('介绍')
+					this.$store.commit('survey')
 					this.$router.replace("/schIntroduction")
 				} else if('设置' === item){
 					console.log('设置')
+					this.$store.commit('survey')
 					this.$router.replace("/classroomSetup")
 				} else if('简章' === item){
 					console.log('简章')
+					this.$store.commit('students')
 					this.$router.replace("/studentBrochure")
 				} else if('保障' === item){
 					console.log('保障')
+					this.$store.commit('students')
 					this.$router.replace("/employmentSecurity")
 				}
 			},
@@ -141,19 +149,31 @@
 			},
 			mouseover1(item) {
 				this.mouseOver = item
-				this.open1 = true
+				setTimeout(function(){
+				   this.open1 = true
+				}.bind(this), 600)
+				// this.open1 = true
 			},
 			mouseout1() {
 				this.mouseOver = ''
-				this.open1 = false
+				setTimeout(function(){
+				   this.open1 = false
+				}.bind(this), 600)
+				// this.open1 = false
 			},
 			mouseover2(item) {
 				this.mouseOver = item
-				this.open2 = true
+				setTimeout(function(){
+				   this.open2 = true
+				}.bind(this), 600)
+				// this.open2 = true
 			},
 			mouseout2() {
 				this.mouseOver = ''
-				this.open2 = false
+				setTimeout(function(){
+				   this.open2 = false
+				}.bind(this), 600)
+				// this.open2 = false
 			},
 			mouseover3(item) {
 				this.mouseOver = item
